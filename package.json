@@ -1,0 +1,14 @@
+{
+  "name": "get-tdd",
+  "version": "1.0.0",
+  "description": "Examples of how to TDD in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["tdd"],
+  "author": {
+    "name": "peter.banjo"
+  },
+  "license": "ISC"
+}
