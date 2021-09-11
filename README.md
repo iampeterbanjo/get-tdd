@@ -14,4 +14,11 @@ This is commonly known as Red, Green and Refactor.
 
 ## Getting started
 
+- `npm run dev`
 - `npm run watch-tests`
+
+## Calculator API
+
+- Receives and responds in JSON
+- Validates inputs
+- Features add and multiply routes
