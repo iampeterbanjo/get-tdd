@@ -18,10 +18,20 @@
   "author": {
     "name": "peter.banjo"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "husky": "^7.0.2",
     "jest": "^27.1.1",
+    "lint-staged": "^11.1.2",
     "nodemon": "^2.0.12",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
