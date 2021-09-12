@@ -9,11 +9,9 @@ describe(`Given healthRoutes`, () => {
 
     const { statusCode } = await server.inject({
       method: 'GET',
-      url: "/health"
-    })
+      url: '/health',
+    });
 
-    expect(statusCode).toEqual(200)
-  })
-})
-
-
+    expect(statusCode).toEqual(200);
+  });
+});
