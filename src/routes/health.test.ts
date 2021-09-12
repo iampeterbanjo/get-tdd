@@ -1,6 +1,6 @@
 import fastify from 'fastify';
-import packageJson from '../package.json';
-import { healthRoutes } from './routes/health';
+import packageJson from '../../package.json';
+import { healthRoutes } from '../routes/health';
 
 const Server = async () => {
   const server = fastify();
