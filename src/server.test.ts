@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+import packageJson from '../package.json';
 import { healthRoutes } from './routes/health';
 
 describe(`Given healthRoutes`, () => {
@@ -30,7 +31,7 @@ describe(`Given healthRoutes`, () => {
 
     expect(statusCode).toEqual(200);
     expect(data).toEqual(expect.objectContaining({
-      version: expect.any(String)
+      version: packageJson.version
     }))
   });
 });
