@@ -10,7 +10,8 @@ This is commonly known as Red, Green and Refactor.
 
 ## Requirements
 
-- NodeJS 16.x
+- NodeJs
+- npm
 
 ## Getting started
 
@@ -21,4 +22,4 @@ This is commonly known as Red, Green and Refactor.
 
 - Receives and responds in JSON
 - Validates inputs
-- Features add and multiply routes
+- Features health, add and multiply routes
