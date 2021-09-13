@@ -21,21 +21,24 @@ describe(`Given addRoutes`, () => {
     expect(statusCode).not.toEqual(404);
   });
 
-  test(`When POST /add
-  And payload is [1, 2]
+  test.each([[[1, 2], 3]])(
+    `When POST /add
+  And variables are %o
   Then statusCode is 200
-  And result is 3`, async () => {
-    const server = await Server();
+  And result is %d`,
+    async (variables, correct) => {
+      const server = await Server();
 
-    const { statusCode, payload } = await server.inject({
-      method: 'POST',
-      url: '/add',
-      payload: [1, 2],
-    });
+      const { statusCode, payload } = await server.inject({
+        method: 'POST',
+        url: '/add',
+        payload: variables,
+      });
 
-    const { result } = JSON.parse(payload);
+      const { result } = JSON.parse(payload);
 
-    expect(statusCode).toEqual(200);
-    expect(result).toEqual(3);
-  });
+      expect(statusCode).toEqual(200);
+      expect(result).toEqual(correct);
+    }
+  );
 });
