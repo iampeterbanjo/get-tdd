@@ -21,7 +21,10 @@ describe(`Given addRoutes`, () => {
     expect(statusCode).not.toEqual(404);
   });
 
-  test.each([[[1, 2], 3]])(
+  test.each([
+    [[1, 2], 3],
+    [[4, 9], 13],
+  ])(
     `When POST /add
   And variables are %o
   Then statusCode is 200
