@@ -10,7 +10,7 @@ const Server = async () => {
 
 describe(`Given addRoutes`, () => {
   test(`When POST /add
-  Then response is NOT 404`, async () => {
+  Then statusCode is NOT 404`, async () => {
     const server = await Server();
 
     const { statusCode } = await server.inject({
