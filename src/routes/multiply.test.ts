@@ -8,15 +8,16 @@ const Server = async () => {
   return server;
 };
 
-describe(`Given multiplyRoutes`, () => {
-  test(`When POST /multiply
-  Then statusCode is NOT 404`, async () => {
-    const server = await Server();
+const postMultiply = {
+  method: 'POST' as const,
+  url: '/multiply',
+};
 
-    const { statusCode } = await server.inject({
-      method: 'POST',
-      url: '/multiply',
-    });
+describe(`Given multiplyRoutes
+  ${JSON.stringify(postMultiply)}`, () => {
+  test(`Then statusCode is NOT 404`, async () => {
+    const server = await Server();
+    const { statusCode } = await server.inject(postMultiply);
 
     expect(statusCode).not.toEqual(404);
   });
@@ -25,16 +26,14 @@ describe(`Given multiplyRoutes`, () => {
     [[1, 2], 2],
     [[4, 9], 36],
   ])(
-    `When POST /multiply
-  And variables are %o
+    `When variables are %o
   Then statusCode is 200
   And result is %d`,
     async (variables, correct) => {
       const server = await Server();
 
       const { statusCode, payload } = await server.inject({
-        method: 'POST',
-        url: '/multiply',
+        ...postMultiply,
         payload: variables,
       });
 

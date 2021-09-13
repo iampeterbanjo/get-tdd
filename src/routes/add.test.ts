@@ -8,15 +8,16 @@ const Server = async () => {
   return server;
 };
 
-describe(`Given addRoutes`, () => {
-  test(`When POST /add
-  Then statusCode is NOT 404`, async () => {
-    const server = await Server();
+const postAdd = {
+  method: 'POST' as const,
+  url: '/add',
+};
 
-    const { statusCode } = await server.inject({
-      method: 'POST',
-      url: '/add',
-    });
+describe(`Given addRoutes
+  ${JSON.stringify(postAdd)}`, () => {
+  test(`Then statusCode is NOT 404`, async () => {
+    const server = await Server();
+    const { statusCode } = await server.inject(postAdd);
 
     expect(statusCode).not.toEqual(404);
   });
@@ -25,16 +26,14 @@ describe(`Given addRoutes`, () => {
     [[1, 2], 3],
     [[4, 9], 13],
   ])(
-    `When POST /add
-  And variables are %o
+    `When variables are %o
   Then statusCode is 200
   And result is %d`,
     async (variables, correct) => {
       const server = await Server();
 
       const { statusCode, payload } = await server.inject({
-        method: 'POST',
-        url: '/add',
+        ...postAdd,
         payload: variables,
       });
 
