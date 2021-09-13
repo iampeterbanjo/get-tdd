@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import { addRoutes } from '../routes/add';
+import { addRoutes } from './add';
 
 const Server = async () => {
   const server = fastify();
