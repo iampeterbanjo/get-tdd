@@ -41,8 +41,7 @@
     "pretty-quick": "^3.1.1",
     "ts-jest": "^27.0.5",
     "tsc-watch": "^4.5.0",
-    "typescript": "^4.4.3",
-    "undici": "^4.5.1"
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "currency.js": "^2.0.4",

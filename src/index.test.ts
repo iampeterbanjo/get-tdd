@@ -1,7 +1,14 @@
 import { FastifyInstance } from 'fastify';
 import getPort from 'get-port';
-import { request } from 'undici';
+import http from 'http';
 import { start } from '.';
+
+const asyncGet = (
+  options: http.RequestOptions
+): Promise<http.IncomingMessage> =>
+  new Promise((resolve, reject) => {
+    http.get(options, (res) => resolve(res));
+  });
 
 describe(`Given start`, () => {
   let server: FastifyInstance;
@@ -17,8 +24,12 @@ describe(`Given start`, () => {
   });
 
   test(`Server is listening`, async () => {
-    const { statusCode } = await request(`http://localhost:${port}/health`);
+    const res = await asyncGet({
+      hostname: 'localhost',
+      port,
+      path: '/health',
+    });
 
-    expect(statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(200);
   });
 });
