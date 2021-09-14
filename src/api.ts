@@ -9,6 +9,7 @@ export const Api = async (options?: Record<string, any>) => {
   await server.register(healthRoutes);
   await server.register(addRoutes);
   await server.register(multiplyRoutes);
+  await server.ready();
 
   return server;
 };

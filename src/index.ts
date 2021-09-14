@@ -1,7 +1,12 @@
 import { Api } from './api';
 
-(async () => {
+export async function start(options: { port: number }) {
   const server = await Api({ logger: true });
+  const { port } = options;
 
-  await server.listen(4000);
-})();
+  await server.listen(port);
+
+  return server;
+}
+
+(async () => start({ port: Number(process.env.PORT) }))();
