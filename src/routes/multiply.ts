@@ -5,8 +5,8 @@ export async function multiplyRoutes(fastify: FastifyInstance) {
     method: 'POST',
     url: '/multiply',
     handler: async (req) => {
-      const [first, second] = req.body as number[];
-      const result = first * second;
+      const numbers = req.body as number[];
+      const result = numbers.reduceRight((prev, current) => prev * current);
 
       return { result };
     },

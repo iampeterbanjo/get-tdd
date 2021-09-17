@@ -25,6 +25,7 @@ describe(`Given multiplyRoutes
   test.each([
     [[1, 2], 2],
     [[4, 9], 36],
+    [[2, 2, 2], 8],
   ])(
     `When variables are %o
   Then statusCode is 200
