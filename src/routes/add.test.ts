@@ -43,4 +43,16 @@ describe(`Given addRoutes
       expect(result).toEqual(correct);
     }
   );
+
+  test(`When variables are strings
+  Then statusCode is 400`, async () => {
+    const server = await Server();
+
+    const { statusCode } = await server.inject({
+      ...postAdd,
+      payload: ['A', 'B'],
+    });
+
+    expect(statusCode).toEqual(400);
+  });
 });
