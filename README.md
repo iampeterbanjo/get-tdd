@@ -1,6 +1,6 @@
-# Get Test Driven Development
+# Get Test-Driven Development
 
-Test Driven Development is programming practice where:
+Test-Driven Development is programming practice where:
 
 - Tests are written before executable code
 - Code is updated to make the tests pass
@@ -15,6 +15,7 @@ This is commonly known as Red, Green and Refactor.
 
 ## Getting started
 
+- `npm install`
 - `npm run dev`
 - `npm run watch-tests`
 
