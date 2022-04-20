@@ -1,6 +1,6 @@
-# Get Test Driven Development
+# Get Test-Driven Development
 
-Test Driven Development is programming practice where:
+Test-Driven Development is a programming practice where:
 
 - Tests are written before executable code
 - Code is updated to make the tests pass
@@ -10,8 +10,17 @@ This is commonly known as Red, Green and Refactor.
 
 ## Requirements
 
-- NodeJS 16.x
+- NodeJs
+- npm
 
 ## Getting started
 
+- `npm install`
+- `npm run dev`
 - `npm run watch-tests`
+
+## Calculator API
+
+- Receives and responds in JSON
+- Validates inputs
+- Features health, add and multiply routes
