@@ -2,13 +2,49 @@
   "name": "get-tdd",
   "version": "1.0.0",
   "description": "Examples of how to TDD in TypeScript",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build tsconfig.json",
+    "predev": "npm run build",
+    "dev": "run-p watch-ts watch-server",
+    "lint-fix": "prettier --write --ignore-unknown **/*",
+    "start": "PORT=4000 node ./build/src/index.js",
+    "test": "jest",
+    "watch-test": "jest --watch --all --coverage=false",
+    "watch-server": "nodemon --delay 250ms --ext js,json --watch build --exec 'npm start'",
+    "watch-ts": "tsc-watch --noClear -p tsconfig.json"
   },
-  "keywords": ["tdd"],
+  "keywords": [
+    "tdd"
+  ],
   "author": {
     "name": "peter.banjo"
   },
-  "license": "ISC"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "lint-staged": {
+    "**/*": "npm run lint-fix"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "get-port": "^5.1.1",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
+    "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.0",
+    "pretty-quick": "^3.1.1",
+    "ts-jest": "^27.0.5",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "currency.js": "^2.0.4",
+    "fastify": "^3.21.0"
+  }
 }
